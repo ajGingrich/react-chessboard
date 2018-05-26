@@ -44,7 +44,7 @@
     "rollup-plugin-uglify": "^3.0.0",
     "rollup-plugin-url": "^1.4.0",
     "rollup-stream": "^1.24.1"
-  }
+  },
   "scripts": {
     "test": "echo \"All tests passed!\" && exit 0",
     "build": "NODE_ENV=production rollup -c --experimentalDynamicImport",
