@@ -1,5 +1,5 @@
 {
-  "name": "react-chessboard",
+  "name": "reactjs-chessboard",
   "version": "0.0.1",
   "description": "chessboard component based on react-chessboardjs",
   "main": "dist/index.js",
