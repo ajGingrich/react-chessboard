@@ -1,34 +1,10 @@
 {
   "name": "react-chessboard",
   "version": "0.0.1",
-  "description": "A chessboard component for React, inspired by chessboard.js",
+  "description": "chessboard component based on react-chessboardjs",
   "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"All tests passed!\" && exit 0",
-    "build": "NODE_ENV=production rollup -c --experimentalDynamicImport",
-    "dev": "NODE_ENV=development rollup -c --watch  --experimentalDynamicImport",
-    "serve": "rollup -c rollup.config.dev.js --watch --experimentalDynamicImport"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/siansell/react-chessboardjs.git"
-  },
-  "keywords": [
-    "react",
-    "chess",
-    "chessboard"
-  ],
-  "author": {
-    "name": "Andrew Gingrich",
-    "email": "ajgingrich@yahoo.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/siansell/react-chessboardjs/issues"
-  },
-  "homepage": "https://github.com/siansell/react-chessboardjs",
-  "peerDependencies": {
-    "react": "^16.2.0"
+  "directories": {
+    "example": "examples"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -69,4 +45,25 @@
     "rollup-plugin-url": "^1.4.0",
     "rollup-stream": "^1.24.1"
   }
+  "scripts": {
+    "test": "echo \"All tests passed!\" && exit 0",
+    "build": "NODE_ENV=production rollup -c --experimentalDynamicImport",
+    "dev": "NODE_ENV=development rollup -c --watch  --experimentalDynamicImport",
+    "serve": "rollup -c rollup.config.dev.js --watch --experimentalDynamicImport"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajGingrich/react-chessboard.git"
+  },
+  "keywords": [
+    "react",
+    "chess",
+    "chessboard"
+  ],
+  "author": "Andrew Gingrich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajGingrich/react-chessboard/issues"
+  },
+  "homepage": "https://github.com/ajGingrich/react-chessboard#readme"
 }
