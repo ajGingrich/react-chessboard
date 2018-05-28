@@ -4,8 +4,10 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import uglify from 'rollup-plugin-uglify'
 import url from 'rollup-plugin-url'
+import analyze from 'rollup-analyzer-plugin'
 
 const env = process.env.NODE_ENV
+// const analyzerOptions = { limit: 5, filter: [], root: 'dist/' }
 
 const plugins = [
   babel({
@@ -32,7 +34,8 @@ const plugins = [
   }),
   replace({
     'process.env.NODE_ENV': JSON.stringify(env),
-  })
+  }),
+  analyze(),
 ]
 
 if (env === 'production') {

@@ -40,63 +40,63 @@ class Piece extends Component {
     if (!this.mounted) return
 
     // import(`./assets/chesspieces/${pieceTheme}/${pieceColour}${piece.toUpperCase()}.svg`)
-    // import('./assets/chesspieces/wikipedia/wK.svg')
-    //   .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //   .catch(error => console.log(error))
+    import('./assets/chesspieces/wikipedia/wK.svg')
+      .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+      .catch(error => console.log(error))
 
-    if (pieceColour === 'w') {
-      if (piece.toUpperCase() === 'K') {
-        import('./assets/chesspieces/wikipedia/wK.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'Q') {
-        import('./assets/chesspieces/wikipedia/wQ.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'R') {
-        import('./assets/chesspieces/wikipedia/wR.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'B') {
-        import('./assets/chesspieces/wikipedia/wB.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'N') {
-        import('./assets/chesspieces/wikipedia/wN.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else {
-        import('./assets/chesspieces/wikipedia/wP.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      }
-    } else if (pieceColour === 'b') {
-      if (piece.toUpperCase() === 'K') {
-        import('./assets/chesspieces/wikipedia/bK.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'Q') {
-        import('./assets/chesspieces/wikipedia/bQ.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'R') {
-        import('./assets/chesspieces/wikipedia/bR.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'B') {
-        import('./assets/chesspieces/wikipedia/bB.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else if (piece.toUpperCase() === 'N') {
-        import('./assets/chesspieces/wikipedia/bN.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      } else {
-        import('./assets/chesspieces/wikipedia/bP.svg')
-          .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-          .catch(error => console.log(error))
-      }
-    }
+    // if (pieceColour === 'w') {
+    //   if (piece.toUpperCase() === 'K') {
+    //     import('./assets/chesspieces/wikipedia/wK.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'Q') {
+    //     import('./assets/chesspieces/wikipedia/wQ.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'R') {
+    //     import('./assets/chesspieces/wikipedia/wR.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'B') {
+    //     import('./assets/chesspieces/wikipedia/wB.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'N') {
+    //     import('./assets/chesspieces/wikipedia/wN.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else {
+    //     import('./assets/chesspieces/wikipedia/wP.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   }
+    // } else if (pieceColour === 'b') {
+    //   if (piece.toUpperCase() === 'K') {
+    //     import('./assets/chesspieces/wikipedia/bK.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'Q') {
+    //     import('./assets/chesspieces/wikipedia/bQ.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'R') {
+    //     import('./assets/chesspieces/wikipedia/bR.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'B') {
+    //     import('./assets/chesspieces/wikipedia/bB.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else if (piece.toUpperCase() === 'N') {
+    //     import('./assets/chesspieces/wikipedia/bN.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   } else {
+    //     import('./assets/chesspieces/wikipedia/bP.svg')
+    //       .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //       .catch(error => console.log(error))
+    //   }
+    // }
 
 
     // we use our own <PieceDragLayer /> component
