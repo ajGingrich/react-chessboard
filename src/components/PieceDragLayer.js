@@ -2,15 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { DragLayer } from 'react-dnd'
 
-const loadPieceImages = (item) => {
-  const { piece, pieceTheme } = item
-  const pieceColour = piece.toUpperCase() === piece ? 'w' : 'b'
-
-  import('./assets/chesspieces/wikipedia/wN.svg')
-    .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    .catch(error => console.log(error))
-}
-
 const layerStyles = {
   position: 'fixed',
   pointerEvents: 'none',
@@ -42,8 +33,64 @@ class PieceDragLayer extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.item) return
+
     if (!this.props.item || (nextProps.item.pieceTheme !== this.props.item.pieceTheme)) {
-      loadPieceImages(nextProps.item)
+      const { piece, pieceColour } = nextProps.item
+      // template literals..
+
+      if (pieceColour === 'w') {
+        if (piece.toUpperCase() === 'K') {
+          import('./assets/chesspieces/alpha/wK.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'Q') {
+          import('./assets/chesspieces/alpha/wQ.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'R') {
+          import('./assets/chesspieces/alpha/wR.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'B') {
+          import('./assets/chesspieces/alpha/wB.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'N') {
+          import('./assets/chesspieces/alpha/wN.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else {
+          import('./assets/chesspieces/alpha/wP.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        }
+      } else if (pieceColour === 'b') {
+        if (piece.toUpperCase() === 'K') {
+          import('./assets/chesspieces/alpha/bK.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'Q') {
+          import('./assets/chesspieces/alpha/bQ.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'R') {
+          import('./assets/chesspieces/alpha/bR.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'B') {
+          import('./assets/chesspieces/alpha/bB.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else if (piece.toUpperCase() === 'N') {
+          import('./assets/chesspieces/alpha/bN.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        } else {
+          import('./assets/chesspieces/alpha/bP.svg')
+            .then(image => this.setState({ image }))
+            .catch(error => console.log(error))
+        }
+      }
     }
   }
 
