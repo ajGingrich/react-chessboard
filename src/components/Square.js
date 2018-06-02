@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { DropTarget } from 'react-dnd'
-import { connect } from 'react-redux'
+// import { DropTarget } from 'react-dnd'
+// import { connect } from 'react-redux'
 
 import { pieceTypes } from '../types'
 
@@ -121,9 +121,9 @@ Square.propTypes = {
   item: PropTypes.object, // injected by react-dnd
   /* eslint-enable react/forbid-prop-types */
   onDragMove: PropTypes.func.isRequired, // injected by react-redux
-  onMouseOutSquare: PropTypes.func.isRequired, // injected by react-redux
-  onMouseOverSquare: PropTypes.func.isRequired, // injected by react-redux
-  onSquareClick: PropTypes.func.isRequired, // injected by react-redux
+  // onMouseOutSquare: PropTypes.func.isRequired, // injected by react-redux
+  // onMouseOverSquare: PropTypes.func.isRequired, // injected by react-redux
+  // onSquareClick: PropTypes.func.isRequired, // injected by react-redux
   orientation: PropTypes.string.isRequired, // injected by react-redux
   piece: PropTypes.oneOf(pieceTypes),
   whiteSquareColour: PropTypes.string.isRequired, // injected by react-redux
@@ -140,30 +140,28 @@ Square.defaultProps = {
   piece: null,
 }
 
-const squareTarget = {
-  drop(props) {
-    return { toSquare: props.algebraic }
-  },
-}
+// const squareTarget = {
+//   drop(props) {
+//     return { toSquare: props.algebraic }
+//   },
+// }
 
-const collect = (dndConnect, monitor) => ({
-  canDrop: monitor.canDrop(),
-  dropResult: monitor.getDropResult(),
-  connectDropTarget: dndConnect.dropTarget(),
-  isOver: monitor.isOver(),
-  item: monitor.getItem(),
-})
+// const collect = (dndConnect, monitor) => ({
+//   canDrop: monitor.canDrop(),
+//   connectDropTarget: dndConnect.dropTarget(),
+//   isOver: monitor.isOver(),
+//   item: monitor.getItem(),
+// })
+//
+// const mapState = state => ({
+//   blackSquareColour: state.blackSquareColour,
+//   fen: state.fen,
+//   onDragMove: state.events.onDragMove,
+//   onMouseOutSquare: state.events.onMouseOutSquare,
+//   onMouseOverSquare: state.events.onMouseOverSquare,
+//   onSquareClick: state.events.onSquareClick,
+//   orientation: state.orientation,
+//   whiteSquareColour: state.whiteSquareColour,
+// })
 
-const mapState = state => ({
-  blackSquareColour: state.blackSquareColour,
-  fen: state.fen,
-  onDragMove: state.events.onDragMove,
-  onDrop: state.events.onDrop,
-  onMouseOutSquare: state.events.onMouseOutSquare,
-  onMouseOverSquare: state.events.onMouseOverSquare,
-  onSquareClick: state.events.onSquareClick,
-  orientation: state.orientation,
-  whiteSquareColour: state.whiteSquareColour,
-})
-
-export default connect(mapState)(DropTarget('piece', squareTarget, collect)(Square))
+export default Square

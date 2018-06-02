@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { DragDropContext } from 'react-dnd'
-import HTML5Backend from 'react-dnd-html5-backend'
+// import { DragDropContext } from 'react-dnd'
+// import HTML5Backend from 'react-dnd-html5-backend'
 
 import Coordinate from './Coordinate'
 import Piece from './Piece'
-import PieceDragLayer from './PieceDragLayer'
+// import PieceDragLayer from './PieceDragLayer'
 import SparePieces from './SparePieces'
 import Square from './Square'
 
@@ -77,7 +77,7 @@ class Chessboard extends Component {
   render() {
     const {
       height,
-      isDraggable,
+      // isDraggable,
       orientation,
       style,
       sparePieces,
@@ -111,7 +111,7 @@ class Chessboard extends Component {
           style={combinedStyles}
         >
           {this.renderSquares()}
-          {isDraggable && <PieceDragLayer uuid={uuid} />}
+          {/* {isDraggable && <PieceDragLayer uuid={uuid} />} */}
         </div>
         {sparePieces && (
           <SparePieces
@@ -129,7 +129,7 @@ Chessboard.propTypes = {
   activeSquare: PropTypes.string,
   fen: PropTypes.string.isRequired, // injected by react-redux
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // injected by react-redux
-  isDraggable: PropTypes.bool.isRequired, // injected by react-redux
+  // isDraggable: PropTypes.bool.isRequired, // injected by react-redux
   orientation: PropTypes.oneOf(orientationTypes).isRequired, // injected by react-redux
   setHeight: PropTypes.func.isRequired, // injected by react-redux
   showCoordinates: PropTypes.bool.isRequired, // injected by react-redux
@@ -160,4 +160,4 @@ const mapDispatch = (dispatch, ownProps) => ({
   setHeight: height => dispatch(setHeightAction(ownProps.uuid, height)),
 })
 
-export default connect(mapState, mapDispatch)(DragDropContext(HTML5Backend)(Chessboard))
+export default connect(mapState, mapDispatch)(Chessboard)

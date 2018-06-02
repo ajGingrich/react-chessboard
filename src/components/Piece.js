@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { DragSource } from 'react-dnd'
-import { getEmptyImage } from 'react-dnd-html5-backend'
+// import { DragSource } from 'react-dnd'
+// import { getEmptyImage } from 'react-dnd-html5-backend'
 import classNames from 'classnames'
 
-import { makeMove as getNewFen } from '../fen'
+// import { makeMove as getNewFen } from '../fen'
 import { orientationTypes, pieceTypes, pieceThemeTypes } from '../types'
 
-import { makeMoveAction } from '../store'
+// import { makeMoveAction } from '../store'
 
 class Piece extends Component {
   state = {
@@ -99,7 +99,7 @@ class Piece extends Component {
       }
     }
     // we use our own <PieceDragLayer /> component
-    this.props.connectDragPreview(getEmptyImage())
+    // this.props.connectDragPreview(getEmptyImage())
   }
 
   render() {
@@ -107,9 +107,9 @@ class Piece extends Component {
     if (!isLoaded) return null
 
     const {
-      connectDragSource,
-      isDragging,
-      isDraggable,
+      // connectDragSource,
+      // isDragging,
+      // isDraggable,
       piece,
       square,
     } = this.props
@@ -123,9 +123,7 @@ class Piece extends Component {
       { 'piece-spare': square === 'spare' },
     )
 
-    /* eslint-disable function-paren-newline */
-    return connectDragSource(
-    /* eslint-enable function-paren-newline */
+    return (
       <img
         alt={piece}
         className={pieceClasses}
@@ -138,24 +136,25 @@ class Piece extends Component {
           opacity: isDragging ? 0.2 : 1,
           pointerEvents: isDraggable ? 'auto' : 'none',
         }}
-      />)
+      />
+    )
   }
 }
 
 Piece.propTypes = {
-  connectDragPreview: PropTypes.func.isRequired, // injected by react-dnd
-  connectDragSource: PropTypes.func.isRequired, // injected by react-dnd
-  isDragging: PropTypes.bool.isRequired, // injected by react-dnd
-  isDraggable: PropTypes.bool.isRequired, // injected by react-redux
+  // connectDragPreview: PropTypes.func.isRequired, // injected by react-dnd
+  // connectDragSource: PropTypes.func.isRequired, // injected by react-dnd
+  // isDragging: PropTypes.bool.isRequired, // injected by react-dnd
+  // isDraggable: PropTypes.bool.isRequired, // injected by react-redux
   piece: PropTypes.oneOf(pieceTypes).isRequired,
   pieceTheme: PropTypes.oneOf(pieceThemeTypes).isRequired, // injected by react-redux
   /* eslint-disable react/no-unused-prop-types */
-  dropOffBoard: PropTypes.bool.isRequired, // injected by react-redux
+  // dropOffBoard: PropTypes.bool.isRequired, // injected by react-redux
   fen: PropTypes.string.isRequired, // injected by react-redux
   makeMove: PropTypes.func.isRequired, // injected by react-redux
-  onDragStart: PropTypes.func.isRequired, // injected by react-redux
-  onDrop: PropTypes.func.isRequired, // injected by react-redux
-  onSnapbackEnd: PropTypes.func.isRequired, // injected by react-redux
+  // onDragStart: PropTypes.func.isRequired, // injected by react-redux
+  // onDrop: PropTypes.func.isRequired, // injected by react-redux
+  // onSnapbackEnd: PropTypes.func.isRequired, // injected by react-redux
   orientation: PropTypes.oneOf(orientationTypes).isRequired, // injected by react-redux
   square: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
@@ -163,6 +162,7 @@ Piece.propTypes = {
 }
 
 
+<<<<<<< HEAD
 const pieceSource = {
   canDrag(props) {
     return props.isDraggable
@@ -250,3 +250,91 @@ const mapDispatch = (dispatch, ownProps) => ({
 })
 
 export default connect(mapState, mapDispatch)(DragSource('piece', pieceSource, collect)(Piece))
+=======
+// const pieceSource = {
+//   canDrag(props) {
+//     return props.isDraggable
+//   },
+//
+//   beginDrag(props) {
+//     const {
+//       fen,
+//       height,
+//       onDragStart,
+//       orientation,
+//       piece,
+//       pieceTheme,
+//       square,
+//     } = props
+//
+//     const item = {
+//       fromSquare: square,
+//       piece,
+//       pieceTheme,
+//       size: height / 8,
+//     }
+//
+//     onDragStart(square, piece, fen, orientation)
+//     return item
+//   },
+//
+//   endDrag(props, monitor) {
+//     const item = monitor.getItem()
+//     const { piece, fromSquare } = item
+//     const {
+//       dropOffBoard,
+//       fen,
+//       makeMove,
+//       onDrop,
+//       onSnapbackEnd,
+//       orientation,
+//       square,
+//     } = props
+//
+//     // dropResult is null if dropped off board, { dropEffect "move", toSquare: "d5" } if dropped on a square
+//     const dropResult = monitor.getDropResult()
+//     let toSquare = dropResult ? dropResult.toSquare : null
+//
+//     // we still pass this, even if onDrop returns 'snapback'
+//     // otherwise needs a refactor
+//     const newPosition = getNewFen(fen, piece, fromSquare, toSquare)
+//
+//     const onDropResult = onDrop(square, toSquare, piece, newPosition, fen, orientation)
+//     if (onDropResult === 'trash') toSquare = null // the piece is removed
+//
+//     const shouldDropOffBoard = !monitor.didDrop() && dropOffBoard && onDropResult !== 'snapback'
+//     const shouldMovePiece = dropResult && onDropResult !== 'snapback'
+//
+//     if (shouldDropOffBoard || shouldMovePiece) {
+//       return makeMove(piece, fromSquare, toSquare)
+//     }
+//
+//     // else it's a snapback
+//     return onSnapbackEnd(piece, square, fen, orientation)
+//   },
+// }
+
+// const collect = (dndConnect, monitor) => ({
+//   connectDragSource: dndConnect.dragSource(),
+//   connectDragPreview: dndConnect.dragPreview(),
+//   isDragging: monitor.isDragging(),
+// })
+
+// const mapState = state => ({
+//   // dropOffBoard: state.dropOffBoard,
+//   fen: state.fen,
+//   height: state.height,
+//   // isDraggable: state.isDraggable,
+//   // onDragStart: state.events.onDragStart,
+//   // onDrop: state.events.onDrop,
+//   // onSnapbackEnd: state.events.onSnapbackEnd,
+//   orientation: state.orientation,
+//   pieceTheme: state.pieceTheme,
+// })
+
+// const mapDispatch = (dispatch, ownProps) => ({
+//   makeMove: (piece, fromSquare, toSquare) => dispatch(makeMoveAction(ownProps.uuid, piece, fromSquare, toSquare)),
+// })
+
+export default Piece
+>>>>>>> wip for removing drag
