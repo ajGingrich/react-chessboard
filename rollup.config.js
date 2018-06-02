@@ -7,7 +7,7 @@ import url from 'rollup-plugin-url'
 import analyze from 'rollup-analyzer-plugin'
 
 const env = process.env.NODE_ENV
-// const analyzerOptions = { limit: 5, filter: [], root: 'dist/' }
+const analyzerOptions = { limit: 5, filter: null }
 
 const plugins = [
   babel({
@@ -35,7 +35,7 @@ const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify(env),
   }),
-  analyze(),
+  analyze(analyzerOptions),
 ]
 
 if (env === 'production') {
