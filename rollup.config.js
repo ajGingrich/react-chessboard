@@ -7,7 +7,7 @@ import url from 'rollup-plugin-url'
 import analyze from 'rollup-analyzer-plugin'
 
 const env = process.env.NODE_ENV
-const analyzerOptions = { limit: 5, filter: null }
+const analyzerOptions = { limit: 15, filter: null }
 
 const plugins = [
   babel({

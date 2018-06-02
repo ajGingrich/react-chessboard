@@ -9,14 +9,22 @@ class App extends Component { // eslint-disable-line
         <Chessboard
           blackSquareColour="steelblue"
           whiteSquareColour="white"
-          pieceTheme="uscf"
+          pieceTheme="wikipedia"
           style={{
             border: '2px solid lightgrey',
           }}
           orientation="b"
         />
         <h3>a second board</h3>
-        {/* <Chessboard /> */}
+        <Chessboard
+          blackSquareColour="steelblue"
+          whiteSquareColour="white"
+          pieceTheme="uscf"
+          style={{
+            border: '2px solid lightgrey',
+          }}
+          orientation="b"
+        />
       </div>
     )
   }
