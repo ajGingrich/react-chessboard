@@ -24,6 +24,7 @@ class Square extends Component {
 
   render() {
     const {
+      activeSquare,
       algebraic,
       canDrop,
       children,
@@ -39,6 +40,14 @@ class Square extends Component {
       piece,
       whiteSquareColour,
     } = this.props
+
+    let showBoxShadow = false
+
+    if (isOver && canDrop) {
+      showBoxShadow = true
+    } else if (activeSquare === algebraic) {
+      showBoxShadow = true
+    }
 
     /* eslint-disable function-paren-newline */
     return connectDropTarget(
@@ -61,7 +70,7 @@ class Square extends Component {
         style={{
           alignItems: 'center',
           backgroundColor: isBlackSquare ? blackSquareColour : whiteSquareColour,
-          boxShadow: (isOver && canDrop) ? 'inset 3px 3px 8px yellow, inset -3px -3px 8px yellow' : 'none',
+          boxShadow: showBoxShadow ? 'inset 3px 3px 8px yellow, inset -3px -3px 8px yellow' : 'none',
           color: isBlackSquare ? whiteSquareColour : blackSquareColour,
           display: 'flex',
           height: algebraic === 'spare' ? '100%' : '12.5%',
@@ -79,6 +88,7 @@ class Square extends Component {
 }
 
 Square.propTypes = {
+  activeSquare: PropTypes.string.isRequired,
   blackSquareColour: PropTypes.string.isRequired, // injected by react-redux
   canDrop: PropTypes.bool.isRequired, // injected by react-dnd
   children: PropTypes.oneOfType([
@@ -106,6 +116,7 @@ Square.propTypes = {
 }
 
 Square.defaultProps = {
+  activeSquare: 'e4',
   children: null,
   item: {},
   piece: null,

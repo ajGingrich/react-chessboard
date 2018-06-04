@@ -26,6 +26,7 @@ class Chessboard extends Component {
 
   renderSquares = () => {
     const {
+      activeSquare,
       fen,
       orientation,
       showCoordinates,
@@ -48,6 +49,7 @@ class Chessboard extends Component {
           <Square
             key={algebraic}
             algebraic={algebraic}
+            activeSquare={activeSquare}
             isBlackSquare={isBlackSquare}
             piece={piece !== '1' ? piece : null}
             uuid={uuid}
@@ -124,6 +126,7 @@ class Chessboard extends Component {
 }
 
 Chessboard.propTypes = {
+  activeSquare: PropTypes.string,
   fen: PropTypes.string.isRequired, // injected by react-redux
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // injected by react-redux
   isDraggable: PropTypes.bool.isRequired, // injected by react-redux
@@ -139,6 +142,7 @@ Chessboard.propTypes = {
 }
 
 Chessboard.defaultProps = {
+  activeSquare: null,
   height: null,
   style: {},
 }

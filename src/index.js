@@ -139,10 +139,11 @@ class ChessboardProvider extends Component {
   }
 
   render() {
-    const { width, style } = this.props
+    const { width, style, activeSquare } = this.props
     return (
       <Provider store={this.store}>
         <Chessboard
+          activeSquare={activeSquare}
           uuid={this.uuid}
           style={style}
           width={width}
@@ -153,6 +154,7 @@ class ChessboardProvider extends Component {
 }
 
 ChessboardProvider.propTypes = {
+  activeSquare: PropTypes.string,
   blackSquareColour: PropTypes.string,
   dropOffBoard: PropTypes.bool,
   fen: PropTypes.string,
@@ -179,6 +181,7 @@ ChessboardProvider.propTypes = {
 }
 
 ChessboardProvider.defaultProps = {
+  activeSquare: null,
   blackSquareColour: initialState.blackSquareColour,
   dropOffBoard: initialState.dropOffBoard,
   fen: initialState.fen,
