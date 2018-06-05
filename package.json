@@ -1,6 +1,6 @@
 {
   "name": "reactjs-chessboard",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "chessboard component based on react-chessboardjs",
   "main": "dist/index.js",
   "directories": {
