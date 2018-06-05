@@ -85,7 +85,6 @@ class ChessboardProvider extends Component {
     store.dispatch(setEventFuncAction(uuid, 'onChange', onChange))
     store.dispatch(setEventFuncAction(uuid, 'onDragMove', onDragMove))
     store.dispatch(setEventFuncAction(uuid, 'onDragStart', onDragStart))
-    store.dispatch(setEventFuncAction(uuid, 'onDragStart', onDragStart))
     store.dispatch(setEventFuncAction(uuid, 'onDrop', onDrop))
     store.dispatch(setEventFuncAction(uuid, 'onMouseOutSquare', onMouseOutSquare))
     store.dispatch(setEventFuncAction(uuid, 'onMouseOverSquare', onMouseOverSquare))

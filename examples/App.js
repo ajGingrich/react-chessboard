@@ -5,7 +5,7 @@ class App extends Component { // eslint-disable-line
   render() {
     return (
       <div>
-        <h2>react-chessboardjs</h2>
+        <h2>reactjs-chessboard</h2>
         <Chessboard
           blackSquareColour="steelblue"
           whiteSquareColour="white"
