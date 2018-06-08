@@ -20,12 +20,6 @@ const plugins = [
       'node_modules/asap/raw.js', // causing a build error, and we don't seem to need it https://github.com/kriskowal/asap/issues/64
     ],
     namedExports: {
-      'node_modules/react-dnd/lib/index.js': [
-        'DragDropContext',
-        'DragLayer',
-        'DragSource',
-        'DropTarget',
-      ],
       'node_modules/react/index.js': [
         'Component',
         'PureComponent',

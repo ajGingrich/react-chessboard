@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { DragSource } from 'react-dnd'
-// import { getEmptyImage } from 'react-dnd-html5-backend'
 import classNames from 'classnames'
 
 // import { makeMove as getNewFen } from '../fen'
 import { orientationTypes, pieceTypes, pieceThemeTypes } from '../types'
 
-// import { makeMoveAction } from '../store'
+import { makeMoveAction } from '../store'
 
 class Piece extends Component {
   state = {
@@ -43,7 +41,10 @@ class Piece extends Component {
     // import('./assets/chesspieces/uscf/wK.svg')
     //   .then(image => this.setState({ isLoaded: true, pieceImage: image }))
     //   .catch(error => console.log(error))
+<<<<<<< HEAD
     // template literals????
+=======
+>>>>>>> remove dragging to minimize bundle and simplify active square
 
     if (pieceColour === 'w') {
       if (piece.toUpperCase() === 'K') {
@@ -98,8 +99,178 @@ class Piece extends Component {
           .catch(error => console.log(error))
       }
     }
+<<<<<<< HEAD
     // we use our own <PieceDragLayer /> component
     // this.props.connectDragPreview(getEmptyImage())
+=======
+
+    // if (pieceTheme === 'wikipedia') {
+    //   console.log('is wikipedia')
+    //   if (pieceColour === 'w') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/wikipedia/wK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/wikipedia/wQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/wikipedia/wR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/wikipedia/wB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/wikipedia/wN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/wikipedia/wP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   } else if (pieceColour === 'b') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/wikipedia/bK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/wikipedia/bQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/wikipedia/bR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/wikipedia/bB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/wikipedia/bN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/wikipedia/bP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   }
+    // } else if (pieceTheme === 'alpha') {
+    //   console.log('is alpha...')
+    //   if (pieceColour === 'w') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/alpha/wK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/alpha/wQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/alpha/wR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/alpha/wB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/alpha/wN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/alpha/wP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   } else if (pieceColour === 'b') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/alpha/bK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/alpha/bQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/alpha/bR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/alpha/bB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/alpha/bN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/alpha/bP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   }
+    // } else if (pieceTheme === 'uscf') {
+    //   console.log('is uscf')
+    //   if (pieceColour === 'w') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/uscf/wK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/uscf/wQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/uscf/wR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/uscf/wB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/uscf/wN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/uscf/wP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   } else if (pieceColour === 'b') {
+    //     if (piece.toUpperCase() === 'K') {
+    //       import('./assets/chesspieces/uscf/bK.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'Q') {
+    //       import('./assets/chesspieces/uscf/bQ.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'R') {
+    //       import('./assets/chesspieces/uscf/bR.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'B') {
+    //       import('./assets/chesspieces/uscf/bB.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else if (piece.toUpperCase() === 'N') {
+    //       import('./assets/chesspieces/uscf/bN.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     } else {
+    //       import('./assets/chesspieces/uscf/bP.svg')
+    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
+    //         .catch(error => console.log(error))
+    //     }
+    //   }
+    // }
+>>>>>>> remove dragging to minimize bundle and simplify active square
   }
 
   render() {
@@ -107,9 +278,6 @@ class Piece extends Component {
     if (!isLoaded) return null
 
     const {
-      // connectDragSource,
-      // isDragging,
-      // isDraggable,
       piece,
       square,
     } = this.props
@@ -130,11 +298,11 @@ class Piece extends Component {
         ref={(el) => { this.pieceImage = el }}
         src={pieceImage}
         style={{
-          cursor: isDraggable ? 'pointer' : 'auto',
+          cursor: 'auto',
           flex: square === 'spare' ? 1 : null,
           height: '100%',
-          opacity: isDragging ? 0.2 : 1,
-          pointerEvents: isDraggable ? 'auto' : 'none',
+          opacity: 1,
+          pointerEvents: 'none',
         }}
       />
     )
@@ -142,26 +310,23 @@ class Piece extends Component {
 }
 
 Piece.propTypes = {
-  // connectDragPreview: PropTypes.func.isRequired, // injected by react-dnd
-  // connectDragSource: PropTypes.func.isRequired, // injected by react-dnd
-  // isDragging: PropTypes.bool.isRequired, // injected by react-dnd
-  // isDraggable: PropTypes.bool.isRequired, // injected by react-redux
   piece: PropTypes.oneOf(pieceTypes).isRequired,
-  pieceTheme: PropTypes.oneOf(pieceThemeTypes).isRequired, // injected by react-redux
-  /* eslint-disable react/no-unused-prop-types */
-  // dropOffBoard: PropTypes.bool.isRequired, // injected by react-redux
-  fen: PropTypes.string.isRequired, // injected by react-redux
-  makeMove: PropTypes.func.isRequired, // injected by react-redux
-  // onDragStart: PropTypes.func.isRequired, // injected by react-redux
-  // onDrop: PropTypes.func.isRequired, // injected by react-redux
-  // onSnapbackEnd: PropTypes.func.isRequired, // injected by react-redux
-  orientation: PropTypes.oneOf(orientationTypes).isRequired, // injected by react-redux
+  pieceTheme: PropTypes.oneOf(pieceThemeTypes).isRequired,
+  fen: PropTypes.string.isRequired,
+  makeMove: PropTypes.func.isRequired,
+  orientation: PropTypes.oneOf(orientationTypes).isRequired,
   square: PropTypes.string.isRequired,
   uuid: PropTypes.string.isRequired,
-  /* eslint-enable react/no-unused-prop-types */
 }
 
+const mapState = state => ({
+  fen: state.fen,
+  height: state.height,
+  orientation: state.orientation,
+  pieceTheme: state.pieceTheme,
+})
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const pieceSource = {
   canDrag(props) {
@@ -338,3 +503,10 @@ export default connect(mapState, mapDispatch)(DragSource('piece', pieceSource, c
 
 export default Piece
 >>>>>>> wip for removing drag
+=======
+const mapDispatch = (dispatch, ownProps) => ({
+  makeMove: (piece, fromSquare, toSquare) => dispatch(makeMoveAction(ownProps.uuid, piece, fromSquare, toSquare)),
+})
+
+export default connect(mapState, mapDispatch)(Piece)
+>>>>>>> remove dragging to minimize bundle and simplify active square

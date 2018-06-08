@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-// import { DragDropContext } from 'react-dnd'
-// import HTML5Backend from 'react-dnd-html5-backend'
 
 import Coordinate from './Coordinate'
 import Piece from './Piece'
-// import PieceDragLayer from './PieceDragLayer'
-import SparePieces from './SparePieces'
 import Square from './Square'
 
 import { setHeightAction } from '../store'
@@ -43,9 +39,7 @@ class Chessboard extends Component {
         const algebraic = `${fileChar}${rankChar}`
         const isBlackSquare = (rank + file) % 2 !== 0
         const piece = fenParts[rank].charAt(file)
-        /* eslint-disable function-paren-newline */
         squares.push(
-        /* eslint-enable function-paren-newline */
           <Square
             key={algebraic}
             algebraic={algebraic}
@@ -66,9 +60,7 @@ class Chessboard extends Component {
               />
             )}
           </Square>,
-        /* eslint-disable function-paren-newline */
         )
-        /* eslint-enable function-paren-newline */
       }
     }
     return squares
@@ -77,11 +69,7 @@ class Chessboard extends Component {
   render() {
     const {
       height,
-      // isDraggable,
-      orientation,
       style,
-      sparePieces,
-      uuid,
       width,
     } = this.props
 
@@ -98,45 +86,25 @@ class Chessboard extends Component {
         className="chessboardContainer"
         ref={(el) => { this.outerContainer = el }}
       >
-        {sparePieces && (
-          <SparePieces
-            colour={orientation === 'w' ? 'b' : 'w'}
-            uuid={uuid}
-            width={width}
-          />
-        )}
         <div
           className="chessboard"
           ref={(el) => { this.container = el }}
           style={combinedStyles}
         >
           {this.renderSquares()}
-          {/* {isDraggable && <PieceDragLayer uuid={uuid} />} */}
         </div>
-        {sparePieces && (
-          <SparePieces
-            colour={orientation}
-            uuid={uuid}
-            width={width}
-          />
-        )}
       </div>
     )
   }
 }
 
 Chessboard.propTypes = {
-  activeSquare: PropTypes.string,
-  fen: PropTypes.string.isRequired, // injected by react-redux
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // injected by react-redux
-  // isDraggable: PropTypes.bool.isRequired, // injected by react-redux
-  orientation: PropTypes.oneOf(orientationTypes).isRequired, // injected by react-redux
-  setHeight: PropTypes.func.isRequired, // injected by react-redux
-  showCoordinates: PropTypes.bool.isRequired, // injected by react-redux
-  /* eslint-disable react/forbid-prop-types */
-  sparePieces: PropTypes.bool.isRequired,
+  fen: PropTypes.string.isRequired,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  orientation: PropTypes.oneOf(orientationTypes).isRequired,
+  setHeight: PropTypes.func.isRequired,
+  showCoordinates: PropTypes.bool.isRequired,
   style: PropTypes.object,
-  /* eslint-enable react/forbid-prop-types */
   uuid: PropTypes.string.isRequired,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 }
@@ -150,10 +118,8 @@ Chessboard.defaultProps = {
 const mapState = state => ({
   fen: state.fen,
   height: state.height,
-  isDraggable: state.isDraggable,
   orientation: state.orientation,
   showCoordinates: state.showCoordinates,
-  sparePieces: state.sparePieces,
 })
 
 const mapDispatch = (dispatch, ownProps) => ({
