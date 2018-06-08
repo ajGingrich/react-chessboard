@@ -41,11 +41,6 @@ class Piece extends Component {
     // import('./assets/chesspieces/uscf/wK.svg')
     //   .then(image => this.setState({ isLoaded: true, pieceImage: image }))
     //   .catch(error => console.log(error))
-<<<<<<< HEAD
-    // template literals????
-=======
->>>>>>> remove dragging to minimize bundle and simplify active square
-
     if (pieceColour === 'w') {
       if (piece.toUpperCase() === 'K') {
         import('./assets/chesspieces/alpha/wK.svg')
@@ -99,10 +94,6 @@ class Piece extends Component {
           .catch(error => console.log(error))
       }
     }
-<<<<<<< HEAD
-    // we use our own <PieceDragLayer /> component
-    // this.props.connectDragPreview(getEmptyImage())
-=======
 
     // if (pieceTheme === 'wikipedia') {
     //   console.log('is wikipedia')
@@ -270,7 +261,6 @@ class Piece extends Component {
     //     }
     //   }
     // }
->>>>>>> remove dragging to minimize bundle and simplify active square
   }
 
   render() {
@@ -326,187 +316,8 @@ const mapState = state => ({
   pieceTheme: state.pieceTheme,
 })
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-const pieceSource = {
-  canDrag(props) {
-    return props.isDraggable
-  },
-
-  beginDrag(props) {
-    const {
-      fen,
-      height,
-      onDragStart,
-      orientation,
-      piece,
-      pieceTheme,
-      square,
-    } = props
-
-    const item = {
-      fromSquare: square,
-      piece,
-      pieceTheme,
-      pieceColour: piece.toUpperCase() === piece ? 'w' : 'b',
-      size: height / 8,
-    }
-
-    onDragStart(square, piece, fen, orientation)
-    return item
-  },
-
-  endDrag(props, monitor) {
-    const item = monitor.getItem()
-    const { piece, fromSquare } = item
-    const {
-      dropOffBoard,
-      fen,
-      makeMove,
-      onDrop,
-      onSnapbackEnd,
-      orientation,
-      square,
-    } = props
-
-    // dropResult is null if dropped off board, { dropEffect "move", toSquare: "d5" } if dropped on a square
-    const dropResult = monitor.getDropResult()
-    let toSquare = dropResult ? dropResult.toSquare : null
-
-    // we still pass this, even if onDrop returns 'snapback'
-    // otherwise needs a refactor
-    const newPosition = getNewFen(fen, piece, fromSquare, toSquare)
-
-    const onDropResult = onDrop(square, toSquare, piece, newPosition, fen, orientation)
-    if (onDropResult === 'trash') toSquare = null // the piece is removed
-
-    const shouldDropOffBoard = !monitor.didDrop() && dropOffBoard && onDropResult !== 'snapback'
-    const shouldMovePiece = dropResult && onDropResult !== 'snapback'
-
-    if (shouldDropOffBoard || shouldMovePiece) {
-      return makeMove(piece, fromSquare, toSquare)
-    }
-
-    // else it's a snapback
-    return onSnapbackEnd(piece, square, fen, orientation)
-  },
-}
-
-const collect = (dndConnect, monitor) => ({
-  connectDragSource: dndConnect.dragSource(),
-  connectDragPreview: dndConnect.dragPreview(),
-  isDragging: monitor.isDragging(),
-})
-
-const mapState = state => ({
-  dropOffBoard: state.dropOffBoard,
-  fen: state.fen,
-  height: state.height,
-  isDraggable: state.isDraggable,
-  onDragStart: state.events.onDragStart,
-  onDrop: state.events.onDrop,
-  onSnapbackEnd: state.events.onSnapbackEnd,
-  orientation: state.orientation,
-  pieceTheme: state.pieceTheme,
-})
-
-const mapDispatch = (dispatch, ownProps) => ({
-  makeMove: (piece, fromSquare, toSquare) => dispatch(makeMoveAction(ownProps.uuid, piece, fromSquare, toSquare)),
-})
-
-export default connect(mapState, mapDispatch)(DragSource('piece', pieceSource, collect)(Piece))
-=======
-// const pieceSource = {
-//   canDrag(props) {
-//     return props.isDraggable
-//   },
-//
-//   beginDrag(props) {
-//     const {
-//       fen,
-//       height,
-//       onDragStart,
-//       orientation,
-//       piece,
-//       pieceTheme,
-//       square,
-//     } = props
-//
-//     const item = {
-//       fromSquare: square,
-//       piece,
-//       pieceTheme,
-//       size: height / 8,
-//     }
-//
-//     onDragStart(square, piece, fen, orientation)
-//     return item
-//   },
-//
-//   endDrag(props, monitor) {
-//     const item = monitor.getItem()
-//     const { piece, fromSquare } = item
-//     const {
-//       dropOffBoard,
-//       fen,
-//       makeMove,
-//       onDrop,
-//       onSnapbackEnd,
-//       orientation,
-//       square,
-//     } = props
-//
-//     // dropResult is null if dropped off board, { dropEffect "move", toSquare: "d5" } if dropped on a square
-//     const dropResult = monitor.getDropResult()
-//     let toSquare = dropResult ? dropResult.toSquare : null
-//
-//     // we still pass this, even if onDrop returns 'snapback'
-//     // otherwise needs a refactor
-//     const newPosition = getNewFen(fen, piece, fromSquare, toSquare)
-//
-//     const onDropResult = onDrop(square, toSquare, piece, newPosition, fen, orientation)
-//     if (onDropResult === 'trash') toSquare = null // the piece is removed
-//
-//     const shouldDropOffBoard = !monitor.didDrop() && dropOffBoard && onDropResult !== 'snapback'
-//     const shouldMovePiece = dropResult && onDropResult !== 'snapback'
-//
-//     if (shouldDropOffBoard || shouldMovePiece) {
-//       return makeMove(piece, fromSquare, toSquare)
-//     }
-//
-//     // else it's a snapback
-//     return onSnapbackEnd(piece, square, fen, orientation)
-//   },
-// }
-
-// const collect = (dndConnect, monitor) => ({
-//   connectDragSource: dndConnect.dragSource(),
-//   connectDragPreview: dndConnect.dragPreview(),
-//   isDragging: monitor.isDragging(),
-// })
-
-// const mapState = state => ({
-//   // dropOffBoard: state.dropOffBoard,
-//   fen: state.fen,
-//   height: state.height,
-//   // isDraggable: state.isDraggable,
-//   // onDragStart: state.events.onDragStart,
-//   // onDrop: state.events.onDrop,
-//   // onSnapbackEnd: state.events.onSnapbackEnd,
-//   orientation: state.orientation,
-//   pieceTheme: state.pieceTheme,
-// })
-
-// const mapDispatch = (dispatch, ownProps) => ({
-//   makeMove: (piece, fromSquare, toSquare) => dispatch(makeMoveAction(ownProps.uuid, piece, fromSquare, toSquare)),
-// })
-
-export default Piece
->>>>>>> wip for removing drag
-=======
 const mapDispatch = (dispatch, ownProps) => ({
   makeMove: (piece, fromSquare, toSquare) => dispatch(makeMoveAction(ownProps.uuid, piece, fromSquare, toSquare)),
 })
 
 export default connect(mapState, mapDispatch)(Piece)
->>>>>>> remove dragging to minimize bundle and simplify active square
