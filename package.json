@@ -1,6 +1,6 @@
 {
   "name": "reactjs-chessboard",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "chessboard component based on react-chessboardjs",
   "main": "dist/index.js",
   "directories": {
@@ -9,8 +9,8 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -44,8 +44,7 @@
   "scripts": {
     "test": "echo \"All tests passed!\" && exit 0",
     "build": "NODE_ENV=production rollup -c --experimentalDynamicImport",
-    "dev": "NODE_ENV=development rollup -c --watch  --experimentalDynamicImport",
-    "serve": "rollup -c rollup.config.dev.js --watch --experimentalDynamicImport"
+    "dev": "rollup -c rollup.config.dev.js --watch --experimentalDynamicImport"
   },
   "repository": {
     "type": "git",

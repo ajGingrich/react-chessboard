@@ -27,12 +27,9 @@ const plugins = [
   replace({
     'process.env.NODE_ENV': JSON.stringify(env),
   }),
+  uglify()
   // analyze(analyzerOptions),
 ]
-
-if (env === 'production') {
-  plugins.push(uglify())
-}
 
 export default {
   input: './src/index.js',
