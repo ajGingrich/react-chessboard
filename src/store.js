@@ -122,7 +122,7 @@ const reducer = id => (state = initialState, action) => {
 
 const createStoreWithId = id => createStore(
   reducer(id),
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk),
 )
 

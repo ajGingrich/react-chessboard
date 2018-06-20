@@ -9,6 +9,7 @@ class App extends Component { // eslint-disable-line
         <Chessboard
           blackSquareColour="steelblue"
           whiteSquareColour="white"
+          width={'100%'}
           style={{
             border: '2px solid lightgrey',
           }}
