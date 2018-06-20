@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-// import { makeMove as getNewFen } from '../fen'
-import { orientationTypes, pieceTypes, pieceThemeTypes } from '../types'
+import { orientationTypes, pieceTypes } from '../types'
 
 import { makeMoveAction } from '../store'
 
@@ -16,15 +15,15 @@ class Piece extends Component {
 
   componentDidMount() {
     this.mounted = true
-    const { piece, pieceTheme } = this.props
-    this.loadImage(piece, pieceTheme)
+    const { piece } = this.props
+    this.loadImage(piece)
   }
 
   componentWillReceiveProps(nextProps) {
-    const { piece, pieceTheme } = nextProps
-    const { piece: currentPiece, pieceTheme: currentPieceTheme } = this.props
-    if (pieceTheme !== currentPieceTheme || piece !== currentPiece) {
-      this.loadImage(piece, pieceTheme)
+    const { piece } = nextProps
+    const { piece: currentPiece } = this.props
+    if (piece !== currentPiece) {
+      this.loadImage(piece)
     }
   }
 
@@ -32,15 +31,11 @@ class Piece extends Component {
     this.mounted = false
   }
 
-  loadImage = (piece, pieceTheme) => {
+  loadImage = (piece) => {
     const pieceColour = piece.toUpperCase() === piece ? 'w' : 'b'
 
     if (!this.mounted) return
 
-    // import(`./assets/chesspieces/${pieceTheme}/${pieceColour}${piece.toUpperCase()}.svg`)
-    // import('./assets/chesspieces/uscf/wK.svg')
-    //   .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //   .catch(error => console.log(error))
     if (pieceColour === 'w') {
       if (piece.toUpperCase() === 'K') {
         import('./assets/chesspieces/alpha/wK.svg')
@@ -94,173 +89,6 @@ class Piece extends Component {
           .catch(error => console.log(error))
       }
     }
-
-    // if (pieceTheme === 'wikipedia') {
-    //   console.log('is wikipedia')
-    //   if (pieceColour === 'w') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/wikipedia/wK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/wikipedia/wQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/wikipedia/wR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/wikipedia/wB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/wikipedia/wN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/wikipedia/wP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   } else if (pieceColour === 'b') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/wikipedia/bK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/wikipedia/bQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/wikipedia/bR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/wikipedia/bB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/wikipedia/bN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/wikipedia/bP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   }
-    // } else if (pieceTheme === 'alpha') {
-    //   console.log('is alpha...')
-    //   if (pieceColour === 'w') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/alpha/wK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/alpha/wQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/alpha/wR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/alpha/wB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/alpha/wN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/alpha/wP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   } else if (pieceColour === 'b') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/alpha/bK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/alpha/bQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/alpha/bR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/alpha/bB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/alpha/bN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/alpha/bP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   }
-    // } else if (pieceTheme === 'uscf') {
-    //   console.log('is uscf')
-    //   if (pieceColour === 'w') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/uscf/wK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/uscf/wQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/uscf/wR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/uscf/wB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/uscf/wN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/uscf/wP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   } else if (pieceColour === 'b') {
-    //     if (piece.toUpperCase() === 'K') {
-    //       import('./assets/chesspieces/uscf/bK.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'Q') {
-    //       import('./assets/chesspieces/uscf/bQ.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'R') {
-    //       import('./assets/chesspieces/uscf/bR.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'B') {
-    //       import('./assets/chesspieces/uscf/bB.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else if (piece.toUpperCase() === 'N') {
-    //       import('./assets/chesspieces/uscf/bN.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     } else {
-    //       import('./assets/chesspieces/uscf/bP.svg')
-    //         .then(image => this.setState({ isLoaded: true, pieceImage: image }))
-    //         .catch(error => console.log(error))
-    //     }
-    //   }
-    // }
   }
 
   render() {
@@ -301,7 +129,6 @@ class Piece extends Component {
 
 Piece.propTypes = {
   piece: PropTypes.oneOf(pieceTypes).isRequired,
-  pieceTheme: PropTypes.oneOf(pieceThemeTypes).isRequired,
   fen: PropTypes.string.isRequired,
   makeMove: PropTypes.func.isRequired,
   orientation: PropTypes.oneOf(orientationTypes).isRequired,
@@ -313,7 +140,6 @@ const mapState = state => ({
   fen: state.fen,
   height: state.height,
   orientation: state.orientation,
-  pieceTheme: state.pieceTheme,
 })
 
 const mapDispatch = (dispatch, ownProps) => ({

@@ -22,7 +22,6 @@ export const initialState = {
   fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR',
   height: 0,
   orientation: 'w',
-  pieceTheme: 'wikipedia',
   showCoordinates: true,
   width: 400,
   whiteSquareColour: '#f0d9b5',
@@ -34,7 +33,6 @@ const SET_FEN = 'SET_FEN'
 const SET_HEIGHT = 'SET_HEIGHT'
 const SET_EVENT_FUNC = 'SET_EVENT_FUNC'
 const SET_ORIENTATION = 'SET_ORIENTATION'
-const SET_PIECE_THEME = 'SET_PIECE_THEME'
 const SET_SHOW_COORDINATES = 'SET_SHOW_COORDINATES'
 const SET_WHITE_SQUARE_COLOUR = 'SET_WHITE_SQUARE_COLOUR'
 
@@ -60,7 +58,6 @@ export const setHeightAction = (id, height) => (dispatch, getState) => {
   getState().events.onResize(oldHeight, newHeight)
 }
 export const setOrientationAction = (id, orientation) => ({ type: `${id}/${SET_ORIENTATION}`, payload: orientation })
-export const setPieceThemeAction = (id, theme) => ({ type: `${id}/${SET_PIECE_THEME}`, payload: theme })
 export const setShowCoordinatesAction = (id, show) => ({ type: `${id}/${SET_SHOW_COORDINATES}`, payload: show })
 export const setWhiteSquareColourAction = (id, colour) => ({ type: `${id}/${SET_WHITE_SQUARE_COLOUR}`, payload: colour })
 
@@ -107,11 +104,6 @@ const reducer = id => (state = initialState, action) => {
       return {
         ...state,
         orientation: action.payload,
-      }
-    case `${id}/${SET_PIECE_THEME}`:
-      return {
-        ...state,
-        pieceTheme: action.payload,
       }
     case `${id}/${SET_SHOW_COORDINATES}`:
       return {

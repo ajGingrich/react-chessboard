@@ -9,7 +9,6 @@ class App extends Component { // eslint-disable-line
         <Chessboard
           blackSquareColour="steelblue"
           whiteSquareColour="white"
-          pieceTheme="wikipedia"
           style={{
             border: '2px solid lightgrey',
           }}
@@ -19,7 +18,6 @@ class App extends Component { // eslint-disable-line
         <Chessboard
           blackSquareColour="steelblue"
           whiteSquareColour="white"
-          pieceTheme="uscf"
           style={{
             border: '2px solid lightgrey',
           }}

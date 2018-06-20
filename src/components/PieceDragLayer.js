@@ -34,9 +34,8 @@ class PieceDragLayer extends Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.item) return
 
-    if (!this.props.item || (nextProps.item.pieceTheme !== this.props.item.pieceTheme)) {
+    if (!this.props.item) {
       const { piece, pieceColour } = nextProps.item
-      // template literals..
 
       if (pieceColour === 'w') {
         if (piece.toUpperCase() === 'K') {

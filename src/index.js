@@ -5,7 +5,7 @@ import uuidv4 from 'uuid/v4'
 
 import Chessboard from './components/Chessboard'
 
-import { orientationTypes, pieceThemeTypes } from './types'
+import { orientationTypes } from './types'
 
 import createStoreWithId, {
   initialState,
@@ -13,7 +13,6 @@ import createStoreWithId, {
   setFenAction,
   setEventFuncAction,
   setOrientationAction,
-  setPieceThemeAction,
   setShowCoordinatesAction,
   setWhiteSquareColourAction,
 } from './store'
@@ -35,7 +34,6 @@ class ChessboardProvider extends Component {
       fen,
       onChange,
       orientation,
-      pieceTheme,
       showCoordinates,
       whiteSquareColour,
     } = this.props
@@ -51,9 +49,6 @@ class ChessboardProvider extends Component {
     }
     if (orientation !== initialState.orientation) {
       store.dispatch(setOrientationAction(uuid, orientation))
-    }
-    if (pieceTheme !== initialState.pieceTheme) {
-      store.dispatch(setPieceThemeAction(uuid, pieceTheme))
     }
     if (showCoordinates !== initialState.showCoordinates) {
       store.dispatch(setShowCoordinatesAction(uuid, showCoordinates))
@@ -72,7 +67,6 @@ class ChessboardProvider extends Component {
       dropOffBoard,
       fen,
       orientation,
-      pieceTheme,
       showCoordinates,
       whiteSquareColour,
     } = nextProps
@@ -88,9 +82,6 @@ class ChessboardProvider extends Component {
     }
     if (orientation !== this.props.orientation) {
       store.dispatch(setOrientationAction(uuid, orientation))
-    }
-    if (pieceTheme !== this.props.pieceTheme) {
-      store.dispatch(setPieceThemeAction(uuid, pieceTheme))
     }
     if (showCoordinates !== this.props.showCoordinates) {
       store.dispatch(setShowCoordinatesAction(uuid, showCoordinates))
@@ -122,7 +113,6 @@ ChessboardProvider.propTypes = {
   fen: PropTypes.string,
   onChange: PropTypes.func,
   orientation: PropTypes.oneOf(orientationTypes),
-  pieceTheme: PropTypes.oneOf(pieceThemeTypes),
   showCoordinates: PropTypes.bool,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object,
@@ -136,7 +126,6 @@ ChessboardProvider.defaultProps = {
   fen: initialState.fen,
   onChange: initialState.events.onChange,
   orientation: initialState.orientation,
-  pieceTheme: initialState.pieceTheme,
   showCoordinates: initialState.showCoordinates,
   width: initialState.width,
   style: {},
